@@ -18,7 +18,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
           bat """
-          echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin
+          echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USER% --password-stdin
           docker push %IMAGE_NAME%:latest
           docker logout
           """
